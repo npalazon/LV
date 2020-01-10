@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://cdn.rawgit.com/duroty/responsive/master/app.embed.js"></script>
+</head>
+<body>
+ <style>
+/* COLORES */
+    .blanco {
+        background-color: #ffffff;
+    }
+    .negro {
+        background-color: #000000;
+        color:#ffffff;
+    }
+    .gris {
+        background-color: #eeeeee;
+    }
+    .azul {
+        background-color: #7ed5ff;
+    }
+    .verde {
+        background-color: #b3dad5;
+    }
+    .salmon {
+        background-color: #ff9797;
+    }
+    .naranja {
+        background-color: #ffb25f;
+    }
+    .psoe {
+        background-color: #d1101c;
+    }
+    .psoe-claro {
+        background-color: #f5b3b3;
+    }
+    .podemos {
+        background-color: #5d3363;
+    }
+    .podemos-claro {
+        background-color: #d0aed5;
+    }
+/* NEGRITA */
+     .negrita {
+         font-weight: 700;
+     }
+/* BOTÓN, FILETE DE FOTO Y SEPARADORES DE PERSONAJES */
+    .boton{
+        background-color: #eeeeee;
+        border-radius: 25px;
+        color:#000000!important;
+        display: inline-block;
+        font-size: 14px;
+        line-height: 16px;
+        padding: 5px 15px;
+        text-align: center;
+        text-transform: uppercase;
+    }
+    .boton:hover{
+        background-color: #999999;
+        color:#ffffff!important;
+    }
+    .filete{
+        border: solid 2px #cccccc;
+    }
+     .separador-lateral {
+        border-right: dotted 1px #cccccc;
+     }
+     .separador-inferior{
+        border-bottom: 0;
+     }
+/*SCROLL SUAVE NATIVO CSS */
+html {
+	scroll-behavior: smooth;
+}
+/* ELEMENTOS */
+    .contenedor-personajes {
+        color: #000000;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 16px;
+        line-height: 20px;
+        margin:0;
+        overflow: hidden;
+        padding:0;
+        text-align: center;
+        vertical-align: top;
+    }
+    .cabecera-personajes, .pie-personajes {
+        margin: 0 0 20px 0;
+        padding:15px 10px;
+    }
+    .contenedor-personajes ul, li, h1, h2 {
+        margin:0;
+        padding:0;
+    }
+    .contenedor-personajes ul{
+        list-style: none;
+    }
+    .cabecera-personajes .titulo {
+        display: block;
+        font-size: 28px;
+        font-weight: 700;
+        line-height: 30px;
+        margin: 0;
+        padding: 0;
+        text-transform: uppercase;
+    }
+    .cabecera-personajes .subtitulo {
+        display: block;
+        font-size: 20px;
+        line-height: 22px;
+        margin: 5px 0 0 0;
+        padding: 0;
+        text-transform: uppercase;
+    }
+    .cabecera-personajes .menu {
+        display: none;
+        /*display: block;*/
+        margin:8px 0 0 0;
+    }
+    .cabecera-personajes .item-menu {
+        border-right: solid 1px #cccccc;
+        display: inline-block;
+        font-size: 16px;
+        line-height: 20px;
+        margin: 5px 0;
+        padding: 0 10px;
+    }
+    .cabecera-personajes .item-menu:last-child {
+        border-right: none;
+    }
+    .cabecera-personajes .item-menu a {
+        color:#999999;
+        text-decoration: none;
+    }
+    .cabecera-personajes .item-menu a:hover{
+        color:#000000;
+    }
+    .cabecera-personajes .anchor-menu {
+        height:0;
+        width:0;
+        margin:0;
+        padding:0;
+    }
+    .cuerpo-personajes .categoria {
+        display: block;
+        /*display:none;*/
+        margin: 0 0 25px 0;
+        padding: 10px 15px;
+        text-align: left;
+    }
+    .cuerpo-personajes .categoria:first-child {
+        margin-top: 20px;
+    }
+    .cuerpo-personajes .titulo-categoria {
+        color:#ffffff;
+        display: inline-block;
+        font-size: 20px;
+        line-height: 22px;
+        font-weight: 700;
+        margin: 0;
+        padding: 0;
+        text-transform: uppercase;
+    }
+    .cuerpo-personajes .anchor-volver {
+        color:#cccccc;
+        display:none;
+        /*display: inline-block;*/
+        float: right;
+        margin: 0;
+        padding:0;
+        text-decoration: none;
+    }
+    .cuerpo-personajes .anchor-volver:hover{
+        color:#ffffff;
+    }
+    .cuerpo-personajes .anchor-categoria {
+        height:0;
+        width:0;
+        margin:0;
+        padding:0;
+    }
+    .flecha {
+        border: solid #999999;
+        border-width: 0 1.5px 1.5px 0;
+        display: none;
+        /*display: inline-block;*/
+        float: right;
+        margin: 8px 0 0 8px;
+        padding: 5px;
+     }
+    .arriba {
+        transform: rotate(-135deg);
+        -webkit-transform: rotate(-135deg);
+}
+    .cuerpo-personajes .personaje {
+        display: inline-block;
+        margin: 0 0 30px 0;
+        overflow: hidden;
+        padding: 0 10px;    
+        text-align: center;
+        vertical-align: top;
+        width:42%;
+    }
+    .personaje .imagen-personaje {
+        border-radius:100px;
+        display: inline-block;
+        float: inherit;
+        margin: 0 0 18px 0;
+        overflow: hidden;
+        padding: 0;
+        width: 100px;
+    }     
+    .personaje .textos-personaje {
+        margin: 0;
+        overflow: hidden;
+        padding: 0;
+    }
+    .textos-personaje .nombre {
+        display: block;
+        font-size: 22px;
+        font-weight: 700;
+        line-height: 24px;
+        margin: 0 0 6px 0;
+        text-transform: uppercase; 
+    }
+    .textos-personaje .texto {
+        display: block;
+        font-size: 18px;
+        line-height: 22px;
+        margin: 0 0 8px 0;
+    }
+    .textos-personaje .enlace {
+        color:#999999;
+        display: none;
+        /*display: inline-block;*/
+        margin: 2px 0 18px 0;
+        text-decoration: none;
+    }
+    .textos-personaje .enlace:hover{
+        color:#000000;
+    }
+    .pie-personajes .logo-vanguardia {
+        display: inline-block;
+        margin:0 6px 0 0;       
+     }
+    .pie-personajes .fuente {
+        display: inline-block;
+        font-size: 13px;
+        line-height: 15px;
+        margin:0;
+        padding:0;
+        vertical-align: text-top;
+    }
+/* MEDIA QUERIES */
+@media screen and (max-width: 540px){
+    .cuerpo-personajes .personaje {
+        display: block;
+        margin: 0 0 18px 0;
+        overflow: hidden;
+        padding: 0;    
+        text-align: left;
+        vertical-align: top;
+        width: 100%;
+    }
+     .separador-lateral{
+        border-right: 0;
+     }
+     .separador-inferior{
+        border-bottom: dotted 1px #dddddd;
+     }
+    .personaje .imagen-personaje {
+        border-radius:100px;
+        display: inline-block;
+        float: left;
+        margin: 0 15px 18px 0;
+        overflow: hidden;
+        padding: 0;
+        width: 100px;
+    }
+    .textos-personaje .nombre {
+        margin: 22px 0 6px 0;
+    }
+}
+@media screen and (max-width: 425px){
+    .cuerpo-personajes .anchor-volver {
+        display: none;
+    }
+    .flecha {
+        border: solid #999999;
+        border-width: 0 2px 2px 0;
+        display: none;
+        float: right;
+        margin: 8px 0 0 8px;
+        padding: 5px;
+     }
+    /*.cuerpo-personajes .personaje:nth-child(odd) {
+        padding: 0 0 5px 0;   
+    }
+    .cuerpo-personajes .personaje:nth-child(even) {
+        padding: 0 0 3px 0;   
+    }*/
+    .textos-personaje .nombre {
+        font-size: 20px;
+        line-height: 22px;
+        margin: 8px 0;
+    }
+    .textos-personaje .texto {
+        font-size: 16px;
+        line-height: 20px;
+        margin: 0 0 10px 0;
+    }
+}
+@media screen and (max-width: 375px){
+    .textos-personaje .nombre {
+        margin: 0 0 6px 0;
+    }
+    .textos-personaje .texto {
+        margin: 0 0 15px 0;
+    }
+}
+@media screen and (max-width: 330px){
+    .cabecera-personajes .item-menu {
+        border-right: none;
+        border-bottom: solid 1px #cccccc;
+        margin: 0 10px 5px 10px;
+        padding: 10px 0 15px 0;
+    }
+    .cabecera-personajes .item-menu:last-child {
+        border-bottom: none;
+        margin: 0 10px;
+    }
+    .pie-personajes .fuente {
+        margin:5px 0 0 0;
+    }
+}
+</style>
+<div class="contenedor-personajes">
+    <div class="cabecera-personajes gris">
+        <h1 class="titulo">En nuevo gobierno de Pedro Sánchez</h1>
+        <span class="subtitulo">Los ministros que conforman el gabinete de coalición</span>
+        <a class="anchor-menu" id="menu-personajes"></a>
+        <ul class="menu">
+            <li class="item-menu">
+                <a href="#psoe" title="item-menu" alt="item-menu" target="_parent">Ministros del PSOE</a>
+            </li>
+            <li class="item-menu">
+                <a href="#podemos" title="item-menu" alt="item-menu" target="_parent">Ministros de Podemos</a>
+            </li>
+        </ul>
+    </div>
+    <ul class="cuerpo-personajes">
+        <a class="anchor-categoria" id="psoe"></a>
+        <li class="categoria psoe">
+            <h2 class="titulo-categoria">Miembros del PSOE</h2>
+            <a class="anchor-volver" href="#menu-personajes"></a>
+        </li>
+        <li class="personaje separador-inferior separador-lateral">
+            <img class="imagen-personaje psoe-claro" src="https://reportajes.lavanguardia.com/stamp/wp-content/uploads/sites/19/2020/01/pedro-sanchez-transp-120x120-ok-3.png" title="Pedro Sánchez" alt="Pedro Sánchez"/>
+            <div class="textos-personaje">
+                <h2 class="nombre">Pedro Sánchez</h2>
+                <span class="texto">Presidente del Gobierno</span>
+                <a class="enlace boton" href="#" title="Ver perfil" alt="Ver perfil" target="_parent">Ver perfil</a>
+            </div>
+        </li>
+        <li class="personaje separador-inferior">
+            <img class="imagen-personaje psoe-claro" src="https://reportajes.lavanguardia.com/stamp/wp-content/uploads/sites/19/2020/01/carmen-calvo-transp-120x120-ok-2.png" title="Carmen Calvo" alt="Carmen Calvo"/>
+            <div class="textos-personaje">
+                <h2 class="nombre">Carmen Calvo</h2>
+                <span class="texto">Vicepresidenta primera, ministra de Presidencia y Relaciones con las Cortes</span>
+                <a class="enlace boton" href="#" title="Ver perfil" alt="Ver perfil" target="_parent">Ver perfil</a>
+            </div>
+        </li>
+        <li class="personaje separador-inferior separador-lateral">
+            <img class="imagen-personaje psoe-claro" src="https://reportajes.lavanguardia.com/stamp/wp-content/uploads/sites/19/2020/01/nadia-calvinyo-transp-120x120-ok-2.png" title="Nadia Calviño" alt="Nadia Calviño"/>
+            <div class="textos-personaje">
+                <h2 class="nombre">Nadia Calviño</h2>
+                <span class="texto">Vicepresidenta económica</span>
+                <a class="enlace boton" href="#" title="Ver perfil" alt="Ver perfil" target="_parent">Ver perfil</a>
+            </div>
+        </li>
+        <li class="personaje separador-inferior">
+            <img class="imagen-personaje psoe-claro" src="https://reportajes.lavanguardia.com/stamp/wp-content/uploads/sites/19/2020/01/teresa-ribera-transp-120x120-2.png" title="Teresa Ribera" alt="Teresa Ribera"/>
+            <div class="textos-personaje">
+                <h2 class="nombre">Teresa Ribera</h2>
+                <span class="texto">Vicepresidenta para la Transición Ecológica y el Reto Demográfico</span>
+                <a class="enlace boton" href="#" title="Ver perfil" alt="Ver perfil" target="_parent">Ver perfil</a>  
+            </div>
+        </li>
+        <li class="personaje separador-inferior separador-lateral">
+            <img class="imagen-personaje psoe-claro" src="https://reportajes.lavanguardia.com/stamp/wp-content/uploads/sites/19/2020/01/jose-luis-abalos-transp-120x120.png" title="José Luis Ábalos" alt="José Luis Ábalos"/>
+            <div class="textos-personaje">
+                <h2 class="nombre">José Luis Ábalos</h2>
+                <span class="texto">Ministro de Transporte, Movilidad y Agenda Urbana</span>
+                <a class="enlace boton" href="#" title="Ver perfil" alt="Ver perfil" target="_parent">Ver perfil</a> 
+            </div>
+        </li>
+        <li class="personaje separador-inferior">
+            <img class="imagen-personaje psoe-claro" src="https://reportajes.lavanguardia.com/stamp/wp-content/uploads/sites/19/2020/01/maria-jesus-montero-transp-120x120-2-ok.png" title="María Jesús Montero" alt="María Jesús Montero"/>
+            <div class="textos-personaje">
+                <h2 class="nombre">María Jesús Montero</h2>
+                <span class="texto">Ministra de Hacienda y Portavoz</span>
+                <a class="enlace boton" href="#" title="Ver perfil" alt="Ver perfil" target="_parent">Ver perfil</a>   
+            </div>
+        </li>
+        <li class="personaje separador-inferior separador-lateral">
+            <img class="imagen-personaje psoe-claro" src="https://reportajes.lavanguardia.com/stamp/wp-content/uploads/sites/19/2020/01/grande-marlaska-transp-120x120-2.png" title="Fernando Grande-Marlaska" alt="Fernando Grande-Marlaska"/>
+            <div class="textos-personaje">
+                <h2 class="nombre">Fernando<br>Grande-Marlaska</h2>
+                <span class="texto">Ministro del Interior</span>
+                <a class="enlace boton" href="#" title="Ver perfil" alt="Ver perfil" target="_parent">Ver perfil</a>
+            </div>
+        </li>
+        <li class="personaje separador-inferior">
+            <img class="imagen-personaje psoe-claro" src="https://reportajes.lavanguardia.com/stamp/wp-content/uploads/sites/19/2020/01/luis-planas-transp-120x120.png" title="Luis Planas" alt="Luis Planas"/>
+            <div class="textos-personaje">
+                <h2 class="nombre">Luis Planas</h2>
+                <span class="texto">Ministro de Agricultura</span>
+                <a class="enlace boton" href="#" title="Ver perfil" alt="Ver perfil" target="_parent">Ver perfil</a>
+            </div>
+        </li>
+        <li class="personaje separador-inferior separador-lateral">
+            <img class="imagen-personaje psoe-claro" src="https://reportajes.lavanguardia.com/stamp/wp-content/uploads/sites/19/2020/01/margarita-robles-transp-120x120-ok.png" title="Margarita Robles" alt="Margarita Robles"/>
+            <div class="textos-personaje">
+                <h2 class="nombre">Margarita Robles</h2>
+                <span class="texto">Ministra de Defensa</span>
+                <a class="enlace boton" href="#" title="Ver perfil" alt="Ver perfil" target="_parent">Ver perfil</a>
+            </div>
+        </li>
+        <li class="personaje  separador-inferior">
+            <img class="imagen-personaje psoe-claro" src="https://reportajes.lavanguardia.com/stamp/wp-content/uploads/sites/19/2020/01/reyes-maroto-transp-120x120-ok.png" title="Reyes Maroto" alt="Reyes Maroto"/>
+            <div class="textos-personaje">
+                <h2 class="nombre">Reyes Maroto</h2>
+                <span class="texto">Ministra de Industria</span>
+                <a class="enlace boton" href="#" title="Ver perfil" alt="Ver perfil" target="_parent">Ver perfil</a>
+            </div>
+        </li>
+        <li class="personaje separador-inferior separador-lateral">
+            <img class="imagen-personaje psoe-claro" src="https://reportajes.lavanguardia.com/stamp/wp-content/uploads/sites/19/2020/01/pedro-duque-transp-120x120-ok.png" title="Pedro Duque" alt="Pedro Duque"/>
+            <div class="textos-personaje">
+                <h2 class="nombre">Pedro Duque</h2>
+                <span class="texto">Ministro de Ciencia</span>
+                <a class="enlace boton" href="#" title="Ver perfil" alt="Ver perfil" target="_parent">Ver perfil</a>
+            </div>
+        </li>
+        <li class="personaje  separador-inferior">
+            <img class="imagen-personaje psoe-claro" src="https://reportajes.lavanguardia.com/stamp/wp-content/uploads/sites/19/2020/01/isabel-celaa-transp-120x120.png" title="Isabel Celaá" alt="Isabel Celaá"/>
+            <div class="textos-personaje">
+                <h2 class="nombre">Isabel Celaá</h2>
+                <span class="texto">Ministra de Educación</span>
+                <a class="enlace boton" href="#" title="Ver perfil" alt="Ver perfil" target="_parent">Ver perfil</a>
+            </div>
+        </li>
+        <li class="personaje separador-inferior separador-lateral">
+            <img class="imagen-personaje psoe-claro" src="https://reportajes.lavanguardia.com/stamp/wp-content/uploads/sites/19/2020/01/arancha-gonzalez-transp-120x120.png" title="Arancha González" alt="Arancha González"/>
+            <div class="textos-personaje">
+                <h2 class="nombre">Arancha González</h2>
+                <span class="texto">Ministra de Exteriores</span>
+                <a class="enlace boton" href="#" title="Ver perfil" alt="Ver perfil" target="_parent">Ver perfil</a>
+            </div>
+        </li>
+        <li class="personaje separador-inferior">
+            <img class="imagen-personaje psoe-claro" src="https://reportajes.lavanguardia.com/stamp/wp-content/uploads/sites/19/2020/01/jose-luis-escriva-transp-120x120-ok.png" title="José Luis Escrivá" alt="José Luis Escrivá"/>
+            <div class="textos-personaje">
+                <h2 class="nombre">José Luis Escrivá</h2>
+                <span class="texto">Ministro de Seguridad Social, Inclusión y Migraciones</span>
+                <a class="enlace boton" href="#" title="Ver perfil" alt="Ver perfil" target="_parent">Ver perfil</a>
+            </div>
+        </li>
+        <li class="personaje">
+            <img class="imagen-personaje psoe-claro" src="https://reportajes.lavanguardia.com/stamp/wp-content/uploads/sites/19/2020/01/salvador-illa-transp-120x120.png" title="Salvador Illa" alt="Salvador Illa"/>
+            <div class="textos-personaje">
+                <h2 class="nombre">Salvador Illa</h2>
+                <span class="texto">Ministro de Sanidad</span>
+                <a class="enlace boton" href="#" title="Ver perfil" alt="Ver perfil" target="_parent">Ver perfil</a>
+            </div>
+        </li>
+        <li class="categoria podemos">
+            <h2 class="titulo-categoria">Miembros de Unidas Podemos</h2>
+            <i class="flecha arriba"></i>
+            <a class="anchor-volver" href="#menu-personajes" target="_parent">Subir</a>
+        </li>
+        <a class="anchor-categoria" id="podemos"></a>
+        <li class="personaje separador-inferior separador-lateral">
+            <img class="imagen-personaje podemos-claro" src="https://reportajes.lavanguardia.com/stamp/wp-content/uploads/sites/19/2020/01/pablo-iglesias-transp-120x120-ok.png" title="Pablo Iglesias" alt="Pablo Iglesias"/>
+            <div class="textos-personaje">
+                <h2 class="nombre">Pablo Iglesias</h2>
+                <span class="texto">Vicepresidente de Derechos Sociales</span>
+                <a class="enlace" href="#" title="Ver perfil" alt="Ver perfil" target="_parent">Ver perfil</a>
+            </div>
+        </li>
+        <li class="personaje separador-inferior">
+            <img class="imagen-personaje podemos-claro" src="https://reportajes.lavanguardia.com/stamp/wp-content/uploads/sites/19/2020/01/irene-montero-transp-120x120-2.png" title="Irene Montero" alt="Irene Montero"/>
+            <div class="textos-personaje">
+                <h2 class="nombre">Irene Montero</h2>
+                <span class="texto">Ministra de Igualdad</span>
+                <a class="enlace boton" href="#" title="Ver perfil" alt="Ver perfil" target="_parent">Ver perfil</a>
+            </div>
+        </li>  
+        <li class="personaje separador-inferior separador-lateral">
+            <img class="imagen-personaje podemos-claro" src="https://reportajes.lavanguardia.com/stamp/wp-content/uploads/sites/19/2020/01/alberto-garzon-transp-120x120-ok.png" title="Alberto Garzón" alt="Alberto Garzón"/>
+            <div class="textos-personaje">
+                <h2 class="nombre">Alberto Garzón</h2>
+                <span class="texto">Ministro de Consumo</span>
+                <a class="enlace boton" href="#" title="Ver perfil" alt="Ver perfil" target="_parent">Ver perfil</a>
+            </div>
+        </li>
+        <li class="personaje separador-inferior">
+            <img class="imagen-personaje podemos-claro" src="https://reportajes.lavanguardia.com/stamp/wp-content/uploads/sites/19/2020/01/yolanda-diaz-transp-120x120.png" title="Yolanda Díaz" alt="Yolanda Díaz"/>
+            <div class="textos-personaje">
+                <h2 class="nombre">Yolanda Díaz</h2>
+                <span class="texto">Ministra de Trabajo</span>
+                <a class="enlace" href="#" title="Ver perfil" alt="Ver perfil" target="_parent">Ver perfil</a>
+            </div>
+        </li>
+        <li class="personaje">
+            <img class="imagen-personaje podemos-claro" src="https://reportajes.lavanguardia.com/stamp/wp-content/uploads/sites/19/2020/01/manuel-castells-transp-120x120-ok-2.png" title="Manuel Castells" alt="Manuel Castells"/>
+            <div class="textos-personaje">
+                <h2 class="nombre">Manuel Castells</h2>
+                <span class="texto">Ministro de Universidades</span>
+                <a class="enlace" href="#" title="Ver perfil" alt="Ver perfil" target="_parent">Ver perfil</a>
+            </div>
+        </li>
+        <a class="anchor-categoria" id="3"></a>
+    </ul>
+    <div class="pie-personajes gris">
+        <img class="logo-vanguardia" src="https://lostsightsblog.files.wordpress.com/2019/03/logo-lv-131x20.png" title="La Vanguardia" alt="La Vanguardia" />
+        <span class="fuente">Fuente: Elaboración propia.</span>
+    </div>
+</div>
+<!-- SCROLL SUAVE JQUERY
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  // Add smooth scrolling to all links
+  $("a").on('click', function(event) {
+
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 800, function(){
+
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+});
+</script> -->
+<!-- SCROLL SUAVE CON SMOOTH SCROLL -->
+<script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@15.0.0/dist/smooth-scroll.polyfills.min.js">
+</script>
+<script>
+const scroll = new SmoothScroll('a[href*="#"]', {speed:200, speedAsDuration: true});
+</script>
+</body>
